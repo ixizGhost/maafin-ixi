@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Maaf Ya Sayang 😔</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://files.catbox.moe/b7ts51.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      backdrop-filter: brightness(60%);
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ffb3c6;
+    }
+
+    .typewriter-text {
+      font-size: 1.3em;
+      min-height: 80px;
+      white-space: pre-wrap;
+    }
+
+    .btn-container {
+      margin-top: 30px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 25px;
+      font-size: 1em;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1e4b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Maaf ya sayang 😞</h1>
+    <div id="typewriter" class="typewriter-text"></div>
+    <div class="btn-container" id="btns" style="display:none;">
+      <button onclick="kirimMaaf()">Aku udah maafin kamu 💕</button>
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "Aku tahu aku udah bikin kamu kecewa...",
+      "Aku gak bermaksud buat nyakitin hati kamu...",
+      "Aku nyesel banget atas semua yang terjadi...",
+      "Aku cuma pengen kita balik lagi seperti dulu...",
+      "Karena aku benar-benar sayang sama kamu 😔💗",
+      "Maafin aku ya? 🥺"
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    const el = document.getElementById("typewriter");
+
+    function typeLine() {
+      if (lineIndex >= lines.length) {
+        document.getElementById("btns").style.display = "block";
+        return;
+      }
+
+      const line = lines[lineIndex];
+      if (charIndex < line.length) {
+        el.textContent += line.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeLine, 50);
+      } else {
+        setTimeout(() => {
+          el.textContent = "";
+          charIndex = 0;
+          lineIndex++;
+          typeLine();
+        }, 1500);
+      }
+    }
+
+    function kirimMaaf() {
+      const nomorKamu = "6281361984560"; // Ganti dengan nomormu
+      const pesan = encodeURIComponent("Aku udah maafin kamu kok 🥰💖");
+      window.location.href = `https://wa.me/${nomorKamu}?text=${pesan}`;
+    }
+
+    window.onload = typeLine;
+  </script>
+</body>
+</html>
