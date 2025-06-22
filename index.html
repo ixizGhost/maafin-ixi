@@ -4,19 +4,28 @@
   <meta charset="UTF-8">
   <title>Maaf Ya Sayang 😔</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: url('https://files.catbox.moe/zfk13k.mp4') no-repeat center center fixed;
-      background-size: cover;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      backdrop-filter: brightness(60%);
+      overflow: hidden;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(60%);
     }
 
     .card {
@@ -24,7 +33,13 @@
       padding: 40px;
       border-radius: 20px;
       max-width: 600px;
+      margin: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      text-align: center;
     }
 
     h1 {
@@ -61,6 +76,13 @@
   </style>
 </head>
 <body>
+
+  <!-- ✅ Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="https://files.catbox.moe/zfk13k.mp4" type="video/mp4">
+    Browser kamu tidak mendukung background video.
+  </video>
+
   <div class="card">
     <h1>Maafin ixi ya sayang 😞</h1>
     <div id="typewriter" class="typewriter-text"></div>
@@ -105,7 +127,7 @@
     }
 
     function kirimMaaf() {
-      const nomorKamu = "6281361984560"; // Ganti dengan nomormu
+      const nomorKamu = "6281361984560"; // Nomormu
       const pesan = encodeURIComponent("Aku udah maafin kamu kok 🥰💖");
       window.location.href = `https://wa.me/${nomorKamu}?text=${pesan}`;
     }
